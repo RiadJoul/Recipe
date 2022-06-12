@@ -14,7 +14,7 @@ const ScreenTitle = ({ title }: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Theme.COLORS.WHITE,
+    backgroundColor:Theme.COLORS.BG,
     display: "flex",
     justifyContent: "center",
     alignContent: "center",

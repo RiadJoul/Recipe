@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     backgroundColor: Theme.COLORS.LIGHTGRAY,
     borderRadius: 30,
-    marginVertical:15
+    marginVertical:15,
+    paddingHorizontal:10
   },
   tab: {
     paddingVertical: 20,
@@ -46,6 +47,6 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 1,
     fontFamily: "font-semiBold",
-    paddingHorizontal: 25
+    paddingHorizontal: 20
   },
 });

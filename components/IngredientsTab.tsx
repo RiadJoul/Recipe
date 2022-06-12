@@ -1,11 +1,8 @@
 import React from "react";
 import { ScrollView, StyleSheet, View, Text } from "react-native";
 import Theme from "../constants/Theme";
+import { generateRandomColor } from "../generateColor";
 
-function generateRandomColor() {
-    var o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
-}
 
 const IngredientsTab = () => {
   return (
@@ -102,6 +99,7 @@ const styles = StyleSheet.create({
     borderBottomColor: Theme.COLORS.LIGHTGRAY,
     borderBottomWidth: 0.3,
     alignItems: "center",
+
   },
   bullet: {
     borderRadius: 10,
@@ -115,6 +113,7 @@ const styles = StyleSheet.create({
     color: Theme.COLORS.GRAY,
     letterSpacing: 0.5,
     fontFamily: "font-semiBold",
+    fontSize:16
   },
   amount: {
     marginLeft: 25,
