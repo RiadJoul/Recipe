@@ -3,79 +3,20 @@ import { ScrollView, StyleSheet, View, Text } from "react-native";
 import Theme from "../constants/Theme";
 import { generateRandomColor } from "../generateColor";
 
-
-const IngredientsTab = () => {
+const IngredientsTab = ({ recipe }: any) => {
+  const ingredients: any[] = recipe.extendedIngredients;
   return (
     <ScrollView style={styles.card}>
-
-        <View style={styles.ingredient}>
+      {ingredients.map((ingredient) => (
+        <View key={ingredient.name} style={styles.ingredient}>
           <Text
             style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
           ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
+          <Text style={styles.element}>{ingredient.name}</Text>
+          <Text style={styles.amount}>{ingredient.amount}</Text>
+          <Text style={styles.unit}>{ingredient.unit}</Text>
         </View>
-        <View style={styles.ingredient}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
-        </View>
-        <View style={styles.ingredient}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
-          <Text style={styles.unit}>L</Text>
-        </View>
-        <View style={styles.ingredient}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
-        </View>
-        <View style={styles.ingredient}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
-        </View>
-        <View style={styles.ingredient}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
-          <Text style={styles.unit}>L</Text>
-        </View>
-        <View style={styles.ingredient}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
-        </View>
-        <View style={styles.ingredient}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
-        </View>
-        <View style={styles.ingredient}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          ></Text>
-          <Text style={styles.element}>Onion</Text>
-          <Text style={styles.amount}>2</Text>
-          <Text style={styles.unit}>L</Text>
-        </View>
-
-   
+      ))}
     </ScrollView>
   );
 };
@@ -99,7 +40,6 @@ const styles = StyleSheet.create({
     borderBottomColor: Theme.COLORS.LIGHTGRAY,
     borderBottomWidth: 0.3,
     alignItems: "center",
-
   },
   bullet: {
     borderRadius: 10,
@@ -113,7 +53,7 @@ const styles = StyleSheet.create({
     color: Theme.COLORS.GRAY,
     letterSpacing: 0.5,
     fontFamily: "font-semiBold",
-    fontSize:16
+    fontSize: 16,
   },
   amount: {
     marginLeft: 25,

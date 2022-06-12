@@ -3,29 +3,31 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, View, Image, Text } from "react-native";
 import Theme from "../constants/Theme";
 
-interface Props {}
+interface Props {
+  recipe: any;
+}
 
-const RecipeCard = () => {
+const RecipeCard = ({ recipe }: Props) => {
   const navigation = useNavigation<any>();
   const imageSource = {
-    uri: "https://assets.bonappetit.com/photos/5e46caf4baec0e000820349c/1:1/w_2560%2Cc_limit/0220-French-Onion-Soup-single-lede.jpg",
+    uri: recipe.image,
   };
   return (
-    <TouchableOpacity style={styles.wrapper} onPress={() => navigation.navigate("Recipe")}>
+    <TouchableOpacity
+      style={styles.wrapper}
+      onPress={() =>
+        navigation.navigate("Recipe",{recipeId:recipe.id,recipeName:recipe.title})
+      }
+    >
       <View style={styles.container}>
         <Image style={styles.image} source={imageSource} />
       </View>
       <View style={styles.recipeInfo}>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>Pumpkin Soup</Text>
+          <Text style={styles.text}>{recipe.title}</Text>
         </View>
         <View style={styles.info}>
-          <Text style={{ color: Theme.COLORS.GRAY, marginRight: 20 }}>
-            🔪 - 8
-          </Text>
-          <Text style={{ color: Theme.COLORS.GRAY, marginLeft: 20 }}>
-            ⏱️ - 15 min
-          </Text>
+          <Text style={{ color: Theme.COLORS.GRAY }}>⏱️ - 15 min</Text>
         </View>
       </View>
     </TouchableOpacity>

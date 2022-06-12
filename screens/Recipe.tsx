@@ -2,44 +2,68 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, Image, View } from "react-native";
 import CookTab from "../components/CookTab";
 import InformationTab from "../components/InformationTab";
-
 import IngredientsTab from "../components/IngredientsTab";
-import RecipeCard from "../components/RecipeCard";
 import Tabs from "../components/Tabs";
 import Theme from "../constants/Theme";
 
-interface Props {
-  id: number;
-}
+import { RouteProp, useRoute } from "@react-navigation/native";
+import axios from "axios";
 
 const Recipe = () => {
+  const route = useRoute<RouteProp<Record<string, any>, string>>();
   const [activeTab, setActiveTab] = useState<number>(0);
-  const imageSource = {
-    uri: "https://assets.bonappetit.com/photos/5e46caf4baec0e000820349c/1:1/w_2560%2Cc_limit/0220-French-Onion-Soup-single-lede.jpg",
+  const [recipe, setRecipe] = useState<any>();
+
+  useEffect(() => {}, []);
+
+  const getRecipe = async () => {
+    await axios
+      .get(
+        `https://api.spoonacular.com/recipes/${
+          route.params!.recipeId
+        }/information?includeNutrition=false`,
+        {
+          params: {
+            apiKey: "072bbf010d094175906e3fa4c29a38ab",
+            includeNutrition: false,
+          },
+        }
+      )
+      .then((res) => {
+        setRecipe(res.data);
+      })
+      .catch((err) => console.log(err));
   };
 
+  useEffect(() => {
+    getRecipe();
+  }, []);
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image style={styles.image} source={imageSource} />
-      </View>
-      <View style={styles.footer}>
-      <View style={styles.recipeInfo}>
-        <Text style={styles.text}>Pumpkin Soup</Text>
-        <View style={styles.info}>
-          <Text style={{ color: Theme.COLORS.GRAY, marginRight: 20 }}>
-            🔪 - 8
-          </Text>
-          <Text style={{ color: Theme.COLORS.GRAY, marginLeft: 20 }}>
-            ⏱️ - 15 min
-          </Text>
-        </View>
-      </View>
-        <Tabs activeTab={activeTab} setTab={setActiveTab} />
-        {activeTab == 0 && <InformationTab />}
-        {activeTab == 1 && <IngredientsTab />}
-        {activeTab == 2 && <CookTab />}
-      </View>
+      {recipe && (
+        <>
+          <View style={styles.header}>
+            <Image style={styles.image} source={{uri: recipe.image}} />
+          </View>
+          <View style={styles.footer}>
+            <View style={styles.recipeInfo}>
+              <Text style={styles.text}>{route.params!.recipeName}</Text>
+              <View style={styles.info}>
+                <Text style={{ color: Theme.COLORS.GRAY, marginRight: 20 }}>
+                  🔪 {recipe.extendedIngredients.length} Ingredients
+                </Text>
+                <Text style={{ color: Theme.COLORS.GRAY, marginLeft: 20 }}>
+                  ⏱️  {recipe.readyInMinutes < 1 ? '> 1min' : recipe.readyInMinutes + ' min'}
+                </Text>
+              </View>
+            </View>
+            <Tabs activeTab={activeTab} setTab={setActiveTab} />
+            {activeTab == 0 && <InformationTab recipe={recipe} />}
+            {activeTab == 1 && <IngredientsTab recipe={recipe} />}
+            {activeTab == 2 && <CookTab recipe={recipe}/>}
+          </View>
+        </>
+      )}
     </View>
   );
 };

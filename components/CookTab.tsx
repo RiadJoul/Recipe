@@ -3,70 +3,27 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import Theme from "../constants/Theme";
 import { generateRandomColor } from "../generateColor";
 
-const CookTab = () => {
+const CookTab = ({ recipe }: any) => {
+
+  const steps:any[] = recipe.analyzedInstructions[0].steps;
   return (
     <>
       <ScrollView style={styles.steps}>
-        <View style={styles.step}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          >
-            1
-          </Text>
-          <Text style={styles.stepText}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-            laboriosam ducimus molestiae voluptate temporibus deserunt provident
-            ab.
-          </Text>
-        </View>
-        <View style={styles.step}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          >
-            1
-          </Text>
-          <Text style={styles.stepText}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-            laboriosam ducimus molestiae voluptate temporibus deserunt provident
-            ab.
-          </Text>
-        </View>
-        <View style={styles.step}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          >
-            1
-          </Text>
-          <Text style={styles.stepText}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-            laboriosam ducimus molestiae voluptate temporibus deserunt provident
-            ab.
-          </Text>
-        </View>
-        <View style={styles.step}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          >
-            1
-          </Text>
-          <Text style={styles.stepText}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-            laboriosam ducimus molestiae voluptate temporibus deserunt provident
-            ab.
-          </Text>
-        </View>
-        <View style={styles.step}>
-          <Text
-            style={[styles.bullet, { backgroundColor: generateRandomColor() }]}
-          >
-            1
-          </Text>
-          <Text style={styles.stepText}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi
-            laboriosam ducimus molestiae voluptate temporibus deserunt provident
-            ab.
-          </Text>
-        </View>
+        {steps.map((step: any) => (
+          <View key={step.number} style={styles.step}>
+            <Text
+              style={[
+                styles.bullet,
+                { backgroundColor: generateRandomColor() },
+              ]}
+            >
+              {step.number}
+            </Text>
+            <Text style={styles.stepText}>
+              {step.step}
+            </Text>
+          </View>
+        ))}
       </ScrollView>
     </>
   );
@@ -91,8 +48,8 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
     textAlign: "center",
     opacity: 0.5,
-    color:Theme.COLORS.BLACK,
-    fontWeight:'600'
+    color: Theme.COLORS.BLACK,
+    fontWeight: "600",
   },
   stepText: {
     color: Theme.COLORS.GRAY,
