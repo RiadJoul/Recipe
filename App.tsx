@@ -1,11 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import Landing from "./screens/Landing";
+
 import React, { useCallback, useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import { View, Text } from "react-native";
 import StackNavigator from "./StackNavigator";
+
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 const getFonts = () =>
   Font.loadAsync({
     "font-regular": require("./assets/fonts/Barlow-Regular.ttf"),
