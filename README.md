@@ -72,7 +72,7 @@ This section should list all major frameworks/libraries used to bootstrap your p
 * [React Native.js](https://reactnative.dev/)
 * [Expo](https://expo.dev/)
 * [Axios](https://axios-http.com/)
-* [Spoonacular API](https://spoonacular.com/)
+* [Spoonacular API](https://spoonacular.com/food-api)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -102,7 +102,7 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [Spoonacular Food & Recipes](https://spoonacular.com/)
+1. Get a free API Key at [Spoonacular Food & Recipes](https://spoonacular.com/food-api)
 2. Clone the repo
    ```sh
    git clone https://github.com/RiadJoul/Recipe.git
