@@ -5,7 +5,7 @@ import InformationTab from "../components/InformationTab";
 import IngredientsTab from "../components/IngredientsTab";
 import Tabs from "../components/Tabs";
 import Theme from "../constants/Theme";
-
+import {APIKEY} from  "../config";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import axios from "axios";
 
@@ -24,7 +24,7 @@ const Recipe = () => {
         }/information?includeNutrition=false`,
         {
           params: {
-            apiKey: "072bbf010d094175906e3fa4c29a38ab",
+            apiKey: APIKEY,
             includeNutrition: false,
           },
         }

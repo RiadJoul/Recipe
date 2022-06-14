@@ -14,6 +14,7 @@ import Button from "../components/Button";
 import ScreenTitle from "../components/ScreenTitle";
 import RecipeCard from "../components/RecipeCard";
 import axios from "axios";
+import { APIKEY } from "../config";
 const Recipes = () => {
   const [tag, setTag] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
@@ -32,7 +33,7 @@ const Recipes = () => {
     await axios
       .get("https://api.spoonacular.com/recipes/findByIngredients", {
         params: {
-          apiKey: "072bbf010d094175906e3fa4c29a38ab",
+            apiKey: APIKEY,
           ingredients: ingredients,
           number: 10,
           ranking: 1,
