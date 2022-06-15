@@ -16,9 +16,7 @@
     <br />
     <br />
     <br />
-    <a href="#">Download in App store</a>
-    ·
-    <a href="#">Download in Playstore</a>
+  
   </p>
 </div>
 
