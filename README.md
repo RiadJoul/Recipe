@@ -107,7 +107,11 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-4. Make a file called `config.ts` and copy this code and replace it with your API key
+4. Make sure expo-cli is updated
+    ```
+    expo-cli upgrade
+    ```
+5. Make a file called `config.ts` and copy this code and replace it with your API key
    ```ts
    export const APIKEY = 'ENTER YOUR API';
    ```
